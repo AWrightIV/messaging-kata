@@ -1,3 +1,76 @@
+# Messaging Kata - TypeScript
+
+## Deliverable
+A simple messaging application, built in Node.js using TypeScript. This application must be able to send and store simple textual messages that can then be retrieved via a RESTful API. This project should take between 2 - 4 hours.
+
+## MVP Requirements
+
+- This application must be presented via a private GitHub repository. When you're done, please add me as a contributor to your private Github repository.
+- This application must be unit tested. Please use Jest.
+- The data that is stored must be accessible via a RESTful API. You can store in memory or a DB
+- A README file with documentation on: how to build it, how to use it, how to run the tests
+
+### Create thread
+Creates a thread on behalf of a user.
+
+#### Request
+```
+POST /thread 
+{
+    "users": [
+        "jeff_goldblum",
+    ]
+}
+```
+
+#### Response
+```
+{
+    "thread_id": 123
+}
+```
+
+### Send message
+Creates a message on behalf of a user on a thread.
+
+#### Request
+```
+POST /thread/:thread_id/:username
+{
+    "message": "This is a message!"
+}
+```
+
+#### Response
+```
+204
+```
+
+### Get thread
+Returns a list of messages by thread ID
+
+#### Request
+```
+GET /thread/:thread_id
+```
+
+#### Response
+```
+{
+    "messages": [
+        {"username": "jeff_goldblum", "message": "This is a message!"},
+        ...
+    ]
+}
+```
+
+### Bonus
+- Include a database for storage instead of in memory
+- Include a functioning React user interface on top of the RESTful API (even more bonus for tests!)
+- Make it function in real-time using sockets
+
+# Template Description
+
 [![TypeScript version][ts-badge]][typescript-38]
 [![Node.js version][nodejs-badge]][nodejs]
 [![APLv2][license-badge]][LICENSE]
